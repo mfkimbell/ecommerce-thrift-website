@@ -9,7 +9,4 @@ const router = require("express").Router();
 //   console.log(username);
 // });
 
-
-
-
 module.exports = router;
