@@ -17,3 +17,4 @@ The purpose of this application was to add a functional interface and e-commerce
 * `PostMan` To verfiy and debug endpoint routing
 * `NodeMon` Live refreshing of changes to Node server
 
+![Screenshot_2023-07-18_at_9 28 25_AM](https://github.com/mfkimbell/ecommerce-thrift-website/assets/107063397/014ed72a-60e8-4f92-8dc2-b4004516f74f)
