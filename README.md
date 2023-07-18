@@ -6,7 +6,7 @@ The purpose of this application was to add a functional interface and e-commerce
 
 The application allows the user to input text and submit that text into an array that is displayed on screen:
 * `React` for rendering jsx elements
-* `Material UI` for desinging css components
+* `Material UI` for styling css components
 * `Npm` package management
 * `Express` establishing routing endpoints
 * `MongoDB` SQL database for storing data
