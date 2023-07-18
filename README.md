@@ -11,7 +11,7 @@ The purpose of this application was to add a functional interface and e-commerce
 * `Mongoose` Data Object Modeling with MongoDB
 * `CryptoJS` Credential encryption and decrpytion
 * `JsonWebToken` Establishing JSON web signatures for user authentication
-* `.env` Managing secrets
+* `DotEnv` Managing .env and secret values
 * `PostMan` To verfiy and debug endpoint routing
 * `NodeMon` Live refreshing of changes to Node server
 
