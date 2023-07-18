@@ -12,4 +12,5 @@ The purpose of this application was to add a functional interface and e-commerce
 * `CryptoJS` Credential encryption and decrpytion
 * `JsonWebToken` Establishing JSON web signatures for users (MAYBE CHANGE)
 * `DotEnv` Managing .env config() values
+* `PostMan` To verfiy and debug endpoint routing
 
