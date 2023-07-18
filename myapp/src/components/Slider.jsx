@@ -2,10 +2,11 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
+import woman1 from "./woman1.png";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -89,14 +90,12 @@ const Slider = () => {
 
   return (
     <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowLeftOutlined />
-      </Arrow>
+     
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
           <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
-              <Image src={item.img} />
+              <Image src={woman1} />
             </ImgContainer>
             <InfoContainer>
               <Title>{item.title}</Title>
@@ -106,9 +105,7 @@ const Slider = () => {
           </Slide>
         ))}
       </Wrapper>
-      <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowRightOutlined />
-      </Arrow>
+   
     </Container>
   );
 };

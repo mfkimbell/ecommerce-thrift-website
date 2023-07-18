@@ -56,21 +56,16 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  font-weight: 600;
 `;
 
 const Navbar = () => {
   return (
     <Container>
       <Wrapper>
-        <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
-        </Left>
+        <Left></Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>SASSY'S VINTAGE</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
