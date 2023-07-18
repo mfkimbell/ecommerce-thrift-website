@@ -1,5 +1,7 @@
 # AdvWebDevFinal
 
+(in progress, due Aug 4th)
+
 The purpose of this application was to add a functional interface and e-commerce site for "Sassy's Thrift" in Birmingham.  
 
 **Tools Used:**
