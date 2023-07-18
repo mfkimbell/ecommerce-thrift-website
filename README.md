@@ -10,4 +10,5 @@ The purpose of this application was to add a functional interface and e-commerce
 * `MongoDB` SQL database for storing data
 * `Mongoose` Data Object Modeling with MongoDB
 * `CryptoJS` Credential encryption and decrpytion
+* `JsonWebToken` Establishing JSON web signatures for users (MAYBE CHANGE)
 
