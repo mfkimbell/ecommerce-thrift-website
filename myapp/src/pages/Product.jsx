@@ -7,8 +7,8 @@ import styled from "styled-components"
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
-
-
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -112,6 +112,7 @@ const Product = () => {
     const [quantity, setQuantity] = useState(1);
     const [color, setColor] = useState("");
     const [size, setSize] = useState("");
+    const dispatch = useDispatch();
 
 
 
@@ -134,8 +135,9 @@ const Product = () => {
       };
 
       const handleClick = () => {
-              
-
+        dispatch(
+            addProduct({ ...product, quantity, color, size })
+          );
       };
     return (
         <Container>
