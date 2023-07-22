@@ -3,8 +3,6 @@ import { useState } from "react";
 import { login } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 
-
-
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
