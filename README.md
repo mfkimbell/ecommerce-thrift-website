@@ -9,7 +9,7 @@ The purpose of this application was to add a functional interface and e-commerce
 * `Material UI` For styling css components
 * `Npm` Package management and frontend server management
 * `Express` Establishing backend server REST API routing endpoints
-* `MongoDB` SQL database for storing data
+* `MongoDB` SQL database for storing data and limit data access to specific IP addresses
 * `Mongoose` Data Object Modeling with MongoDB
 * `CryptoJS` Credential encryption and decrpytion
 * `JsonWebToken` Establishing JSON web signatures for user authentication
