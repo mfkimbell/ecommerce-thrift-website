@@ -90,7 +90,6 @@ const Slider = () => {
 
   return (
     <Container>
-     
       <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
           <Slide bg={item.bg} key={item.id}>
@@ -105,7 +104,6 @@ const Slider = () => {
           </Slide>
         ))}
       </Wrapper>
-   
     </Container>
   );
 };

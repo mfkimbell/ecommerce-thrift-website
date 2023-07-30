@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { signup } from "../redux/apiCalls";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100vw;
@@ -16,7 +19,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 20%;
   padding: 20px;
   background-color: white;
 `;
@@ -53,22 +56,43 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log("clicky");
+    signup(dispatch, { username, password });
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
-        <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
-          <Agreement>
-            By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
-          </Agreement>
-          <Button>CREATE</Button>
+        <Form style={{ display: "flex", flexDirection: "row" }}>
+          <Input
+            style={{ minWidth: "15em" }}
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <Input
+            style={{ minWidth: "15em" }}
+            placeholder="password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <Button
+            style={{ marginTop: "1em" }}
+            onClick={handleClick}
+            disabled={isFetching}
+          >
+            {" "}
+            REGISTER{" "}
+          </Button>
         </Form>
       </Wrapper>
     </Container>
