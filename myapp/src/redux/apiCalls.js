@@ -11,6 +11,12 @@ export const login = async (dispatch, user) => {
   }
 };
 
-export const signup = async () => {
+export const signup = async (dispatch, user) => {
   console.log("signup");
+  try {
+    const res = await publicRequest.post("/auth/register", user);
+    dispatch(loginSuccess(res.data));
+  } catch (err) {
+    dispatch(loginFailure());
+  }
 };

@@ -58,13 +58,14 @@ const Button = styled.button`
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState()
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
     console.log("clicky");
-    signup(dispatch, { username, password });
+    signup(dispatch, { username, email, password });
   };
 
   return (
@@ -76,6 +77,12 @@ const Register = () => {
             style={{ minWidth: "15em" }}
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <Input
+            placeholder="email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <Input
