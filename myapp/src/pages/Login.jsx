@@ -3,16 +3,13 @@ import { useState } from "react";
 import { login } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 
+import clothes1 from "../components/images/clothes.png";
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
   background-size: cover;
+  background-image: url(${clothes1});
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,10 +63,19 @@ const Error = styled.span`
   color: red;
 `;
 
+const Clickable = styled.div`
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+  font-weight: 600;
+`;
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
 
@@ -87,7 +93,7 @@ const Login = () => {
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
-          
+
           <Input
             placeholder="password"
             type="password"
@@ -99,7 +105,10 @@ const Login = () => {
           </Button>
           {error && <Error>Something went wrong...</Error>}
 
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <p>
+            {" "}
+            New to Sassys? <a href="/register"> Create an Account</a>
+          </p>
         </Form>
       </Wrapper>
     </Container>

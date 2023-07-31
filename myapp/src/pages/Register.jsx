@@ -3,15 +3,12 @@ import { signup } from "../redux/apiCalls";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import clothes1 from "../components/images/clothes.png";
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+  background-image: url(${clothes1});
   background-size: cover;
   display: flex;
   align-items: center;
@@ -58,7 +55,7 @@ const Button = styled.button`
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState()
+  const [email, setEmail] = useState();
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
 
@@ -86,7 +83,7 @@ const Register = () => {
           />
 
           <Input
-            style={{ minWidth: "15em" }}
+            style={{ minWidth: "20em" }}
             placeholder="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}

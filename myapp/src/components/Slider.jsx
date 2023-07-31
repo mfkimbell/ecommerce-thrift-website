@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
-import woman1 from "./woman1.png";
+import woman1 from "./images/woman1.png";
 
 const Container = styled.div`
   width: 100%;
