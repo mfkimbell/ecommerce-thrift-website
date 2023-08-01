@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import styled from "styled-components";
-import { sliderItems } from "../data";
+import { item } from "../data";
 import woman1 from "./images/woman1.png";
 
 const Container = styled.div`
@@ -12,30 +12,9 @@ const Container = styled.div`
   overflow: hidden;
 `;
 
-const Arrow = styled.div`
-  width: 50px;
-  height: 50px;
-  background-color: #fff7f7;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${(props) => props.direction === "left" && "10px"};
-  right: ${(props) => props.direction === "right" && "10px"};
-  margin: auto;
-  cursor: pointer;
-  opacity: 0.5;
-  z-index: 2;
-`;
-
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  transition: all 1.5s ease;
-  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
@@ -71,40 +50,24 @@ const Desc = styled.p`
   letter-spacing: 3px;
 `;
 
-const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
-const Slider = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const handleClick = (direction) => {
-    if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
-    } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
-    }
-  };
-
+const Poster = () => {
   return (
     <Container>
-      <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
+      <Wrapper>
+        
           <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
               <Image src={woman1} />
             </ImgContainer>
             <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
+              <Title>DON'T WAIT</Title>
+              <Desc>CHECK OUT OUR INVENTORY TODAY!</Desc>
             </InfoContainer>
           </Slide>
-        ))}
+       
       </Wrapper>
     </Container>
   );
 };
 
-export default Slider;
+export default Poster;

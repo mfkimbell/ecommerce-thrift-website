@@ -1,4 +1,4 @@
-export const sliderItems = [
+export const item = [
   {
     id: 1,
     img: "",

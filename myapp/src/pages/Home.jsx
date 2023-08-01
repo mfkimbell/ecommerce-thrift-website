@@ -1,7 +1,7 @@
 import React from "react";
 import Announcement from "../components/Announcement";
 import Navbar from "../components/Navbar";
-import Slider from "../components/Slider";
+import Poster from "../components/Poster";
 
 import Products from "../components/Products";
 
@@ -12,7 +12,7 @@ const Home = () => {
     <div>
       <Navbar />
       <Announcement />
-      <Slider />
+      <Poster/>
 
       <Products />
       
