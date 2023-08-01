@@ -8,59 +8,59 @@ const {
 const router = require("express").Router();
 
 //UPDATE
-router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
-  if (req.body.password) {
-    req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
+router.put("/:id", verifyTokenAndAuthorization, async (request, response) => {
+  if (request.body.password) {
+    request.body.password = CryptoJS.AES.encrypt(
+      request.body.password,
       process.env.PASS_SEC
     ).toString();
   }
 
   try {
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
+      request.params.id,
       {
-        $set: req.body,
+        $set: request.body,
       },
       { new: true }
     );
-    res.status(200).json(updatedUser);
+    response.status(200).json(updatedUser);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //DELETE
-router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
+router.delete("/:id", verifyTokenAndAuthorization, async (request, response) => {
   try {
-    await User.findByIdAndDelete(req.params.id);
-    res.status(200).json("User has been deleted...");
+    await User.findByIdAndDelete(request.params.id);
+    response.status(200).json("User has been deleted...");
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //GET USER
-router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
+router.get("/find/:id", verifyTokenAndAdmin, async (request, response) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(request.params.id);
     const { password, ...others } = user._doc;
-    res.status(200).json(others);
+    response.status(200).json(others);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //GET ALL USER
-router.get("/", verifyTokenAndAdmin, async (req, res) => {
-  const query = req.query.new;
+router.get("/", verifyTokenAndAdmin, async (request, response) => {
+  const query = request.query.new;
   try {
     const users = query
       ? await User.find().sort({ _id: -1 }).limit(5)
       : await User.find();
-    res.status(200).json(users);
+    response.status(200).json(users);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 

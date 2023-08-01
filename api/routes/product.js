@@ -9,57 +9,57 @@ const router = require("express").Router();
 
 //CREATE
 
-router.post("/", verifyTokenAndAdmin, async (req, res) => {
-  const newProduct = new Product(req.body);
+router.post("/", verifyTokenAndAdmin, async (request, response) => {
+  const newProduct = new Product(request.body);
 
   try {
     const savedProduct = await newProduct.save();
-    res.status(200).json(savedProduct);
+    response.status(200).json(savedProduct);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //UPDATE
-router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.put("/:id", verifyTokenAndAdmin, async (request, response) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
+      request.params.id,
       {
-        $set: req.body,
+        $set: request.body,
       },
       { new: true }
     );
-    res.status(200).json(updatedProduct);
+    response.status(200).json(updatedProduct);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //DELETE
-router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.delete("/:id", verifyTokenAndAdmin, async (request, response) => {
   try {
-    await Product.findByIdAndDelete(req.params.id);
-    res.status(200).json("Product has been deleted...");
+    await Product.findByIdAndDelete(request.params.id);
+    response.status(200).json("Product has been deleted...");
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //GET PRODUCT
-router.get("/find/:id", async (req, res) => {
+router.get("/find/:id", async (request, response) => {
   try {
-    const product = await Product.findById(req.params.id);
-    res.status(200).json(product);
+    const product = await Product.findById(request.params.id);
+    response.status(200).json(product);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //GET ALL PRODUCTS
-router.get("/", async (req, res) => {
-  const qNew = req.query.new;
-  const qCategory = req.query.category;
+router.get("/", async (request, response) => {
+  const qNew = request.query.new;
+  const qCategory = request.query.category;
   try {
     let products;
 
@@ -75,9 +75,9 @@ router.get("/", async (req, res) => {
       products = await Product.find();
     }
 
-    res.status(200).json(products);
+    response.status(200).json(products);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 

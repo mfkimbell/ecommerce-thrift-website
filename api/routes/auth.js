@@ -4,33 +4,33 @@ const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
 //REGISTER
-router.post("/register", async (req, res) => {
+router.post("/register", async (request, response) => {
   const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
+    username: request.body.username,
+    email: request.body.email,
     password: CryptoJS.AES.encrypt(
-      req.body.password,
+      request.body.password,
       process.env.PASS_SEC
     ).toString(),
   });
 
   try {
     const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
+    response.status(201).json(savedUser);
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
 //LOGIN
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (request, response) => {
   try {
     const user = await User.findOne({
-      userName: req.body.user_name,
+      userName: request.body.user_name,
     });
 
-    !user && res.status(401).json("Wrong User Name");
+    !user && response.status(401).json("Wrong User Name");
 
     const hashedPassword = CryptoJS.AES.decrypt(
       user.password,
@@ -39,11 +39,11 @@ router.post("/login", async (req, res) => {
 
     const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
-    const inputPassword = req.body.password;
+    const inputPassword = request.body.password;
     console.log("4444", originalPassword);
     console.log("4444", originalPassword);
 
-    originalPassword != inputPassword && res.status(401).json("Wrong Password");
+    originalPassword != inputPassword && response.status(401).json("Wrong Password");
 
     const accessToken = jwt.sign(
       {
@@ -55,9 +55,9 @@ router.post("/login", async (req, res) => {
     );
 
     const { password, ...others } = user._doc;
-    res.status(200).json({ ...others, accessToken });
+    response.status(200).json({ ...others, accessToken });
   } catch (err) {
-    res.status(500).json(err);
+    response.status(500).json(err);
   }
 });
 
