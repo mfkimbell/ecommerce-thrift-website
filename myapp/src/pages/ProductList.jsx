@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Products from "../components/Products";
-import Newsletter from "../components/Newsletter";
+
 import Footer from "../components/Footer";
 import { useLocation } from "react-router";
 import { useState } from "react";
@@ -40,8 +40,6 @@ const ProductList = () => {
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("newest");
 
-
-
   const handleFilters = (e) => {
     const value = e.target.value;
     setFilters({
@@ -49,7 +47,6 @@ const ProductList = () => {
       [e.target.name]: value,
     });
   };
-
 
   console.log(filters);
   return (
@@ -61,9 +58,7 @@ const ProductList = () => {
         <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select name="color" onChange={handleFilters}>
-            <Option disabled>
-              Color
-            </Option>
+            <Option disabled>Color</Option>
             <Option>White</Option>
             <Option>Black</Option>
             <Option>Red</Option>
@@ -72,9 +67,7 @@ const ProductList = () => {
             <Option>Green</Option>
           </Select>
           <Select name="size" onChange={handleFilters}>
-            <Option disabled>
-              Size
-            </Option>
+            <Option disabled>Size</Option>
             <Option>XS</Option>
             <Option>S</Option>
             <Option>M</Option>
@@ -92,7 +85,7 @@ const ProductList = () => {
         </Filter>
       </FilterContainer>
       <Products cat={cat} filters={filters} sort={sort} />
-      <Newsletter />
+
       <Footer />
     </Container>
   );

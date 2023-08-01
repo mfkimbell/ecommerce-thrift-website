@@ -2,10 +2,26 @@ import styled from "styled-components";
 import { useState } from "react";
 import { login } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Container,
+  Row,
+  Col,
+  Input,
+  Button,
+  Navbar,
+  Nav,
+  NavbarBrand,
+  NavLink,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 
 import clothes1 from "../components/images/clothes.png";
 
-const Container = styled.div`
+const Container2 = styled.div`
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -19,6 +35,7 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
+  border-radius: 20px;
 `;
 
 const Title = styled.h1`
@@ -31,45 +48,8 @@ const Form = styled.form`
   flex-direction: column;
 `;
 
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 10px 0;
-  padding: 10px;
-`;
-
-const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
-  margin-bottom: 10px;
-  &:disabled {
-    color: green;
-    cursor: not-allowed;
-  }
-`;
-
-const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
-
 const Error = styled.span`
   color: red;
-`;
-
-const Clickable = styled.div`
-  color: black;
-  text-decoration: none;
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 25px;
-  font-weight: 600;
 `;
 
 const Login = () => {
@@ -85,33 +65,40 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <Container2>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
           <Input
+            style={{ marginTop: "20px" }}
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
 
           <Input
+            style={{ marginTop: "20px" }}
             placeholder="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick} disabled={isFetching}>
+          <Button
+            style={{ marginTop: "20px", backgroundColor: "#0D6EFD" }}
+            onClick={handleClick}
+            disabled={isFetching}
+            class="btn btn-primary"
+          >
             {" "}
-            LOGIN{" "}
+            <b>LOGIN</b>{" "}
           </Button>
           {error && <Error>Something went wrong...</Error>}
 
-          <p>
+          <p style={{ marginTop: "10px" }}>
             {" "}
             New to Sassys? <a href="/register"> Create an Account</a>
           </p>
         </Form>
       </Wrapper>
-    </Container>
+    </Container2>
   );
 };
 

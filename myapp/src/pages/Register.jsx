@@ -3,6 +3,22 @@ import { signup } from "../redux/apiCalls";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import {
+  Row,
+  Col,
+  Input,
+  Button,
+  Navbar,
+  Nav,
+  NavbarBrand,
+  NavLink,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
+
 import clothes1 from "../components/images/clothes.png";
 
 const Container = styled.div`
@@ -19,6 +35,10 @@ const Wrapper = styled.div`
   width: 20%;
   padding: 20px;
   background-color: white;
+  border: 3px;
+  borderradius: BorderRadius.circular(20);
+
+  border-radius: 20px;
 `;
 
 const Title = styled.h1`
@@ -29,27 +49,6 @@ const Title = styled.h1`
 const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
-`;
-
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0px 0px;
-  padding: 10px;
-`;
-
-const Agreement = styled.span`
-  font-size: 12px;
-  margin: 20px 0px;
-`;
-
-const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
 `;
 
 const Register = () => {
@@ -71,31 +70,33 @@ const Register = () => {
         <Title>CREATE AN ACCOUNT</Title>
         <Form style={{ display: "flex", flexDirection: "row" }}>
           <Input
-            style={{ minWidth: "15em" }}
+            style={{ minWidth: "20em" }}
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
 
           <Input
+            style={{ minWidth: "20em", marginTop: "10px" }}
             placeholder="email"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <Input
-            style={{ minWidth: "20em" }}
+            style={{ minWidth: "20em", marginTop: "10px" }}
             placeholder="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
 
           <Button
-            style={{ marginTop: "1em" }}
+            style={{ marginTop: "10px", backgroundColor: "#0D6EFD" }}
             onClick={handleClick}
             disabled={isFetching}
+            class="btn btn-primary"
           >
             {" "}
-            REGISTER{" "}
+            <b>REGISTER</b>{" "}
           </Button>
         </Form>
       </Wrapper>
