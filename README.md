@@ -27,6 +27,6 @@ Give all logged in users a JSON Web Token, that is used to verify the ID of user
 We keep the "id" of a user as well as the "isAdmin" property in the web token to decide if a user meets the credentials to perform actions.
 An "admin" can perform any action. The security token is currently set to expire after 3 days, after that, a user would be require to login again.
 We use some middleware to verify the JSON Web Token. 
-`verifyToken` checks if a token exists as well as if it's valid (for instance, making sure it isn't expired). 
-If everything checks out, a new request and response are used to continue the route. `verifyTokenAndAuthorization` actually checks if the current user matches the user in the JSON Web Token. `verifyTokenAndAdmin` is only used for admin actions and checks the token's "isAdmin" status.
+`verifyToken()` checks if a token exists as well as if it's valid (for instance, making sure it isn't expired). 
+If everything checks out, a new request and response are used to continue the route. `verifyTokenAndAuthorization()` actually checks if the current user matches the user in the JSON Web Token. `verifyTokenAndAdmin()` is only used for admin actions and checks the token's "isAdmin" status.
 In order to troubleshoot with postman, you have to manually pass the access token from loggin in into the headers for the request. 
