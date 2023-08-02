@@ -1,4 +1,4 @@
-# AdvWebDevFinal
+# ecommerce-thrift-website
 
 (in progress, due Aug 4th)
 
