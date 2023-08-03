@@ -27,7 +27,7 @@ router.post("/register", async (request, response) => {
 router.post("/login", async (request, response) => {
   try {
     const user = await User.findOne({
-      userName: request.body.user_name,
+      username: request.body.username,
     });
 
     !user && response.status(401).json("Wrong User Name");
@@ -43,7 +43,8 @@ router.post("/login", async (request, response) => {
     console.log("4444", originalPassword);
     console.log("4444", originalPassword);
 
-    originalPassword != inputPassword && response.status(401).json("Wrong Password");
+    originalPassword != inputPassword &&
+      response.status(401).json("Wrong Password");
 
     const accessToken = jwt.sign(
       {
