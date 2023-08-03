@@ -17,7 +17,7 @@ The purpose of this application was to add a functional interface and e-commerce
 * `.env` Storing secret keys/values
 * `PostMan` To verfiy and debug endpoint routing
 * `NodeMon` Live refreshing of changes to Node server
-* `Redux` State managment tool, specifically used for Cart implementation
+* `Redux` State managment tool, specifically used for Cart implementation, persisting login state upon reloading pages
 
 ### Security:
 We did not want to save the explicit passwords in our DB, so we encrypt them before saving them to MongoDB. 
