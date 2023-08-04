@@ -1,6 +1,7 @@
 # ecommerce-thrift-website
 
-(in progress, due Aug 4th)
+### How to run
+Run `npm install` then `npm start` in both the "Api" and "MyApp" folder.
 
 The purpose of this application was to add a functional interface and e-commerce site for "Sassy's Thrift" in Birmingham.  
 
