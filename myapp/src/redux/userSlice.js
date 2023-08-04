@@ -15,6 +15,10 @@ const userSlice = createSlice({
     loginFailure: (state) => {
       state.error = true;
     },
+    logout: (state) => {
+      state.currentUser = null;
+      state.error = false;
+    },
   },
 });
 
@@ -37,5 +41,5 @@ export const signup = async (dispatch, user) => {
   }
 };
 
-export const { loginSuccess, loginFailure } = userSlice.actions; // need to export even though its in same file
+export const { loginSuccess, loginFailure, logout } = userSlice.actions; // need to export even though its in same file
 export default userSlice.reducer;

@@ -2,8 +2,11 @@ import { Badge } from "@mui/material";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../redux/userSlice";
+import { clearCartUponLogout } from "../redux/cartSlice";
+
 
 const Container = styled.div`
   height: 60px;
@@ -65,6 +68,12 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.currentUser);
+  const handleClick = () => {
+    dispatch(logout());
+    dispatch(clearCartUponLogout());
+  };
   return (
     <Container>
       <Wrapper>
@@ -73,6 +82,7 @@ const Navbar = () => {
           <Logo>SASSY'S VINTAGE</Logo>
         </Center>
         <Right>
+          {user ? (<Link style={{ textDecoration: "none" }} to="" onClick={handleClick}> <MenuItem>LOGOUT</MenuItem> </Link>) : null}
           <Link style={{ textDecoration: "none" }} to="/register">
             <MenuItem>REGISTER</MenuItem>
           </Link>
