@@ -32,3 +32,17 @@ We use some middleware to verify the JSON Web Token.
 `verifyToken()` checks if a token exists as well as if it's valid (for instance, making sure it isn't expired). 
 If everything checks out, a new request and response are used to continue the route. `verifyTokenAndAuthorization()` actually checks if the current user matches the user in the JSON Web Token. `verifyTokenAndAdmin()` is only used for admin actions and checks the token's "isAdmin" status.
 In order to troubleshoot with postman, you have to manually pass the access token from loggin in into the headers for the request. 
+
+## Screenshots:
+
+<img width="1599" alt="Screenshot 2023-08-04 at 5 27 31 PM" src="https://github.com/mfkimbell/ecommerce-thrift-website/assets/107063397/7b93d527-d977-4506-ba6b-b099743e734e">
+
+<img width="631" alt="Screenshot 2023-08-04 at 5 25 38 PM" src="https://github.com/mfkimbell/ecommerce-thrift-website/assets/107063397/61230b1d-04b3-47f5-a813-3c1a7f0d14b3">
+
+<img width="629" alt="Screenshot 2023-08-04 at 5 25 45 PM" src="https://github.com/mfkimbell/ecommerce-thrift-website/assets/107063397/7072acd2-9d0c-4c9f-92f1-f3fc2809858c">
+
+<img width="810" alt="Screenshot 2023-08-04 at 5 25 23 PM" src="https://github.com/mfkimbell/ecommerce-thrift-website/assets/107063397/9c420fc1-e3d1-4b46-8adb-6bf3429debac">
+
+<img width="825" alt="Screenshot 2023-08-04 at 5 25 31 PM" src="https://github.com/mfkimbell/ecommerce-thrift-website/assets/107063397/751a7d33-d2f2-418a-9f36-ce354a401105">
+
+
