@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { login } from "../redux/apiCalls";
+import { login } from "../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Container,
@@ -55,13 +55,14 @@ const Error = styled.span`
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+
+  const user = { username, password };
+  const { error } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    login(dispatch, user);
   };
 
   return (
@@ -84,13 +85,12 @@ const Login = () => {
           <Button
             style={{ marginTop: "20px", backgroundColor: "#0D6EFD" }}
             onClick={handleClick}
-            disabled={isFetching}
             class="btn btn-primary"
           >
             {" "}
             <b>LOGIN</b>{" "}
           </Button>
-          {error && <Error>Something went wrong...</Error>}
+          {error && <Error>Incorrect Credentials... </Error>}
 
           <p style={{ marginTop: "10px" }}>
             {" "}

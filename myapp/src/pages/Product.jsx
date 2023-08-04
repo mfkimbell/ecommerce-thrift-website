@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
-import { addProduct } from "../redux/cartRedux";
+import { addProduct } from "../redux/cartSlice";
 import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
@@ -106,26 +106,30 @@ const Button = styled.button`
 
 const Product = () => {
   const location = useLocation();
-  const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
+
   const [color, setColor] = useState("");
+  const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
+
+  const product_id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await publicRequest.get("/products/find/" + id);
-        setProduct(res.data);
+        const response = await publicRequest.get("/products/find/" + product_id);
+        setProduct(response.data);
       } catch {}
     };
     getProduct();
-  }, [id]);
+  }, [product_id]);
 
-  const handleQuantity = (type) => {
-    if (type === "dec") {
-      quantity > 1 && setQuantity(quantity - 1);
+  const handleQuantity = (add) => {
+    if (add === false) {
+      if (quantity > 1) {
+        setQuantity(quantity - 1);
+      }
     } else {
       setQuantity(quantity + 1);
     }
@@ -165,9 +169,9 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove onClick={() => handleQuantity("dec")} />
+              <Remove onClick={() => handleQuantity(false)} />
               <Amount>{quantity}</Amount>
-              <Add onClick={() => handleQuantity("inc")} />
+              <Add onClick={() => handleQuantity(true)} />
             </AmountContainer>
             <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>

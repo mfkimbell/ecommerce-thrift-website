@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { signup } from "../redux/apiCalls";
+import { signup } from "../redux/userSlice";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
