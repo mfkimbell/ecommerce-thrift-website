@@ -1,5 +1,5 @@
 import { Badge } from "@mui/material";
-import { Search, ShoppingCartOutlined } from "@mui/icons-material";
+import { Home, ShoppingCartOutlined } from "@mui/icons-material";
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -77,7 +77,15 @@ const Navbar = () => {
   return (
     <Container>
       <Wrapper>
-        <Left></Left>
+        <Left>
+          <Link to="/">
+            <MenuItem>
+              <Badge color="primary">
+                <Home />
+              </Badge>
+            </MenuItem>
+          </Link>
+        </Left>
         <Center>
           <Logo>SASSY'S VINTAGE</Logo>
         </Center>

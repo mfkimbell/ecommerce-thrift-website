@@ -56,12 +56,13 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState();
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.user);
+  const user = {username, email, password};
 
   const handleClick = (e) => {
     e.preventDefault();
     console.log("clicky");
-    signup(dispatch, { username, email, password });
+    signup(dispatch, user);
   };
 
   return (
@@ -92,7 +93,6 @@ const Register = () => {
           <Button
             style={{ marginTop: "10px", backgroundColor: "#0D6EFD" }}
             onClick={handleClick}
-            disabled={isFetching}
             class="btn btn-primary"
           >
             {" "}
